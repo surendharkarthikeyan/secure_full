@@ -1,0 +1,49 @@
+.new-chat-page {
+  text-align: center;
+}
+
+.chat-name-input-group {
+  margin: 30px 0;
+}
+
+.chat-name-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.chat-name-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.start-btn {
+  padding: 15px 30px;
+  font-size: 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.start-btn:hover {
+  background: #1d4ed8;
+  cursor: pointer;
+}
+
+.start-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
