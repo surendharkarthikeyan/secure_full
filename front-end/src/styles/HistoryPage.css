@@ -1,0 +1,133 @@
+/* ===============================
+   HISTORY PAGE LAYOUT (COMPACT)
+   =============================== */
+
+.history-page {
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 20px;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.history-header {
+  margin-bottom: 20px;
+}
+
+.history-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-header p {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* ===============================
+   GRID (MORE DENSE)
+   =============================== */
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* ===============================
+   CHAT CARD (COMPACT)
+   =============================== */
+
+.history-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.history-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   CARD CONTENT
+   =============================== */
+
+.card-content h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e3a8a;
+  word-break: break-word;
+}
+
+.card-content .date {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* ===============================
+   ACTION BUTTONS
+   =============================== */
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.load-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  background: #2563eb;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.load-btn:hover {
+  background: #1e40af;
+}
+
+.delete-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  background: #fee2e2;
+  color: #b91c1c;
+  transition: background 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
+}
+
+/* ===============================
+   EMPTY STATE
+   =============================== */
+
+.no-history {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
