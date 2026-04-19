@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ChatMessage from "../components/ChatMessage";
 import "../styles/ChatPage.css";
 
@@ -10,6 +10,11 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const fileInputRef = useRef(null);
+  const chatEndRef = useRef(null);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const replaceProcessing = (text) => {
     setMessages((prev) =>
@@ -45,7 +50,7 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
     newMessages.push({
       role: "ai",
       type: "text",
-      text: "🔍 Processing your request securely...",
+      text: "Processing your request securely...",
       processing: true
     });
 
@@ -70,7 +75,7 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
       const replyText = await res.text();
       replaceProcessing(replyText);
     } catch {
-      replaceProcessing("❌ Something went wrong.");
+      replaceProcessing("⚠ Something went wrong. Please try again.");
     } finally {
       setIsProcessing(false);
     }
@@ -79,12 +84,13 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
   return (
     <div className="chat-page">
       <h2>{chatName || "Secure AI Chat"}</h2>
-      <p className="tagline">PII Protection Enabled</p>
+      <p className="tagline">PII Protection Active</p>
 
       <div className="chat-container">
         {messages.map((msg, i) => (
           <ChatMessage key={i} {...msg} />
         ))}
+        <div ref={chatEndRef} />
       </div>
 
       {image && (
@@ -119,13 +125,14 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
           className="icon-btn"
           onClick={() => fileInputRef.current.click()}
           disabled={isProcessing}
+          title="Attach image"
         >
           +
         </button>
 
         <input
           className="chat-text-input"
-          placeholder="Ask anything"
+          placeholder="Type your message..."
           value={input}
           disabled={isProcessing}
           onChange={(e) => setInput(e.target.value)}
@@ -136,6 +143,7 @@ export default function ChatPage({ chatName, messages, setMessages, chatId }) {
           className="send-btn"
           onClick={sendMessage}
           disabled={isProcessing}
+          title="Send message"
         >
           ➤
         </button>

@@ -1,49 +1,168 @@
+/* ===============================
+   NEW CHAT PAGE — BINANCE STYLE
+   =============================== */
+
 .new-chat-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
+  padding: 40px 24px;
+  position: relative;
 }
 
+/* Subtle gold glow background */
+.new-chat-page::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(240, 185, 11, var(--glow-opacity)), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.new-chat-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== LOGO ICON ===== */
+.new-chat-logo {
+  width: 64px;
+  height: 64px;
+  background: var(--accent);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 24px rgba(240, 185, 11, 0.2);
+}
+
+.new-chat-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.new-chat-page > p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  font-weight: 400;
+  max-width: 400px;
+}
+
+/* ===== FEATURE BADGES ===== */
+.feature-badges {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.feature-badge .badge-icon {
+  font-size: 14px;
+}
+
+/* ===== INPUT GROUP ===== */
 .chat-name-input-group {
-  margin: 30px 0;
+  margin: 0 0 24px;
+  width: 100%;
+  max-width: 420px;
 }
 
 .chat-name-input {
   width: 100%;
-  max-width: 400px;
-  padding: 12px 15px;
-  font-size: 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
   box-sizing: border-box;
-  transition: border-color 0.2s;
+  transition: all var(--transition-normal);
+}
+
+.chat-name-input::placeholder {
+  color: var(--text-muted);
 }
 
 .chat-name-input:focus {
-  outline: none;
-  border-color: #2563eb;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.08);
+  background: var(--bg-tertiary);
 }
 
 .error-message {
-  color: #ef4444;
-  font-size: 14px;
+  color: var(--danger);
+  font-size: 12px;
   margin-top: 8px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
+.error-message::before {
+  content: '⚠';
+  font-size: 13px;
+}
+
+/* ===== START BUTTON ===== */
 .start-btn {
-  padding: 15px 30px;
-  font-size: 16px;
-  background: #2563eb;
-  color: white;
+  padding: 14px 56px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--accent-text);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
 }
 
 .start-btn:hover {
-  background: #1d4ed8;
-  cursor: pointer;
+  background: var(--accent-hover);
+  box-shadow: 0 4px 20px rgba(240, 185, 11, 0.25);
+}
+
+.start-btn:active {
+  transform: scale(0.98);
 }
 
 .start-btn:disabled {
-  background: #9ca3af;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
   cursor: not-allowed;
+  box-shadow: none;
 }

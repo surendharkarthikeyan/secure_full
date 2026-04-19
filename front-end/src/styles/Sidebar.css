@@ -1,24 +1,54 @@
 /* ===============================
-   SIDEBAR LAYOUT
+   SIDEBAR — BINANCE STYLE
    =============================== */
 
 .sidebar {
   width: 260px;
-  background: #f1f5f9;
-  padding: 20px;
-  border-right: 1px solid #e5e7eb;
+  min-width: 260px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Gold accent top bar */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
 }
 
 /* ===============================
    HEADER / BRANDING
    =============================== */
 
+.sidebar h2 {
+  padding: 24px 20px 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .subtitle {
-  font-size: 12px;
-  color: #64748b;
-  margin-bottom: 10px;
+  padding: 0 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 24px;
 }
 
 /* ===============================
@@ -26,18 +56,31 @@
    =============================== */
 
 .menu-btn {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 10px;
+  padding: 10px 14px;
   text-decoration: none;
-  color: white;
-  background: #2563eb;
-  border-radius: 6px;
-  font-size: 14px;
+  color: var(--text-secondary);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  border: 1px solid transparent;
+}
+
+.menu-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
 }
 
 .menu-btn.active {
-  background: #1e40af;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-color: var(--border-accent);
+  font-weight: 600;
 }
 
 /* ===============================
@@ -45,64 +88,121 @@
    =============================== */
 
 .sidebar-history {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px solid #e5e7eb;
-
+  margin-top: 12px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-
-  /* Scroll-safe like ChatGPT */
-  max-height: 45vh;
+  gap: 1px;
+  flex: 1;
   overflow-y: auto;
 }
 
 .sidebar-history-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 14px 8px 8px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 4px;
 }
 
 /* Each chat item */
 .sidebar-chat-item {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 10px;
-  border-radius: 6px;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 13px;
-  background: #e0e7ff;
-  color: #1e3a8a;
-  transition: background 0.2s ease;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all var(--transition-fast);
 }
 
 .sidebar-chat-item:hover {
-  background: #c7d2fe;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
-/* Prevent long titles from breaking layout */
 .sidebar-chat-item span {
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 400;
 }
 
 /* Empty state */
 .sidebar-empty {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--text-muted);
+  padding: 20px 12px;
+  text-align: center;
 }
 
 /* ===============================
-   FOOTER (OPTIONAL)
+   THEME TOGGLE
    =============================== */
 
-.sidebar-footer {
+.theme-toggle-wrapper {
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
   margin-top: auto;
-  font-size: 12px;
-  color: #475569;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-toggle-btn .theme-icon {
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-xs);
+  background: var(--accent-light);
+  transition: all var(--transition-normal);
+}
+
+.theme-toggle-btn:hover .theme-icon {
+  background: var(--accent-glow);
+}
+
+.theme-toggle-btn .theme-label {
+  flex: 1;
+  text-align: left;
+}
+
+.theme-toggle-btn .theme-shortcut {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }

@@ -7,7 +7,11 @@ export default function ChatMessage({ role, text, imageUrl, type }) {
         <img src={imageUrl} alt="uploaded" className="chat-image" />
       )}
 
-      {type === "text" && <div className="message-text">{text}</div>}
+      {type === "text" && (
+        <div className="message-text">
+          {text}
+        </div>
+      )}
     </div>
   );
 }

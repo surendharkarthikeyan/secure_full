@@ -1,11 +1,13 @@
 /* ===============================
-   HISTORY PAGE LAYOUT (COMPACT)
+   HISTORY PAGE — BINANCE STYLE
    =============================== */
 
 .history-page {
   max-width: 100%;
   margin: 0;
-  padding: 16px 20px;
+  padding: 24px 28px;
+  overflow-y: auto;
+  height: 100%;
 }
 
 /* ===============================
@@ -13,70 +15,86 @@
    =============================== */
 
 .history-header {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
 
 .history-header h1 {
   margin: 0;
-  font-size: 24px;
-  color: #1f2937;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-white);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: -0.01em;
 }
 
 .history-header p {
   margin-top: 4px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 13px;
+  font-weight: 400;
 }
 
 /* ===============================
-   GRID (MORE DENSE)
+   TABLE-STYLE LIST (Binance-like)
    =============================== */
 
 .history-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 /* ===============================
-   CHAT CARD (COMPACT)
+   CHAT CARD — ROW STYLE
    =============================== */
 
 .history-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
   display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  gap: 16px;
 }
 
 .history-card:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transform: translateY(-1px);
+  background: var(--bg-tertiary);
+  border-color: var(--border-light);
 }
 
 /* ===============================
    CARD CONTENT
    =============================== */
 
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
 .card-content h3 {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: #1e3a8a;
+  color: var(--text-primary);
   word-break: break-word;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content .date {
-  margin-top: 4px;
+  margin-top: 2px;
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* ===============================
@@ -86,39 +104,41 @@
 .card-actions {
   display: flex;
   gap: 8px;
-  margin-top: 14px;
+  flex-shrink: 0;
 }
 
 .load-btn {
-  flex: 1;
-  padding: 8px;
-  border-radius: 6px;
+  padding: 8px 18px;
+  border-radius: var(--radius-xs);
   border: none;
   cursor: pointer;
-  font-size: 13px;
-  background: #2563eb;
-  color: white;
-  transition: background 0.2s ease;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--accent-text);
+  transition: all var(--transition-normal);
 }
 
 .load-btn:hover {
-  background: #1e40af;
+  background: var(--accent-hover);
+  box-shadow: 0 2px 12px rgba(240, 185, 11, 0.2);
 }
 
 .delete-btn {
-  flex: 1;
-  padding: 8px;
-  border-radius: 6px;
-  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(246, 70, 93, 0.25);
   cursor: pointer;
-  font-size: 13px;
-  background: #fee2e2;
-  color: #b91c1c;
-  transition: background 0.2s ease;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--danger-light);
+  color: var(--danger);
+  transition: all var(--transition-normal);
 }
 
 .delete-btn:hover {
-  background: #fecaca;
+  background: rgba(246, 70, 93, 0.18);
+  border-color: rgba(246, 70, 93, 0.4);
 }
 
 /* ===============================
@@ -126,8 +146,8 @@
    =============================== */
 
 .no-history {
-  margin-top: 40px;
+  margin-top: 80px;
   text-align: center;
-  font-size: 13px;
-  color: #94a3b8;
+  font-size: 14px;
+  color: var(--text-muted);
 }
